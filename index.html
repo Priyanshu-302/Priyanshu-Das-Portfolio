@@ -1630,9 +1630,29 @@
 
           document.body.style.overflow = isOpening ? "hidden" : "auto";
 
-          const icon = menuButton.querySelector("i");
-          icon.setAttribute("data-feather", isOpening ? "x" : "menu");
-          feather.replace();
+          // FIX: Target the container (menuButton) and tell Feather to replace the icon directly.
+          // Feather.replace() correctly handles updating the SVG/Icon within the button.
+
+          const iconContainer = menuButton;
+          const newIconName = isOpening ? "x" : "menu";
+
+          // 1. Remove the old icon (SVG element or original <i> if it exists)
+          const currentIcon =
+            iconContainer.querySelector("svg") ||
+            iconContainer.querySelector("i");
+          if (currentIcon) {
+            currentIcon.remove();
+          }
+
+          // 2. Insert the new <i> tag with the correct icon name
+          const newIconElement = document.createElement("i");
+          newIconElement.setAttribute("data-feather", newIconName);
+          newIconElement.classList.add("text-white"); // Keep the original class
+          iconContainer.appendChild(newIconElement);
+
+          // 3. Re-run Feather.replace() on the specific button to convert the new <i> tag to an SVG.
+          // This is the simplest way to ensure the icon is always updated correctly.
+          feather.replace({ target: iconContainer });
         }
 
         menuButton.addEventListener("click", toggleMenu);
