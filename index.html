@@ -1575,16 +1575,12 @@
     </script>
     <script defer>
       document.addEventListener("DOMContentLoaded", function () {
+        // Vanta.js Initialization: FORCING DARK MODE BACKGROUND
         if (typeof VANTA !== "undefined") {
-          const isDark =
-            localStorage.getItem("theme") === "dark" ||
-            (!localStorage.getItem("theme") &&
-              window.matchMedia("(prefers-color-scheme: dark)").matches);
-
           let vantaOptions = {
             el: "#particles-js",
-            backgroundColor: isDark ? "#111827" : "#f9fafb",
-            color: isDark ? "#3b82f6" : "#2563eb",
+            backgroundColor: "#111827", // FORCED DARK BACKGROUND
+            color: "#3b82f6", // FORCED DARK MODE COLOR
             points: 12,
             maxDistance: 20,
             spacing: 15,
@@ -1742,71 +1738,7 @@
         window.addEventListener("scroll", checkScroll);
         goToAboutBtn.classList.add("visible");
 
-        const themeToggle = document.getElementById("theme-toggle");
-        const mobileThemeToggle = document.getElementById(
-          "mobile-theme-toggle"
-        );
-        const prefersDarkScheme = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        );
-
-        function setTheme(theme) {
-          const isDark = theme === "dark";
-          document.documentElement.classList.toggle("dark", isDark);
-          localStorage.setItem("theme", theme);
-
-          if (window.vantaEffect) {
-            window.vantaEffect.setOptions({
-              backgroundColor: isDark ? "#111827" : "#f9fafb",
-              color: isDark ? "#3b82f6" : "#2563eb",
-            });
-          }
-
-          const mobileIcon = document.querySelector("#mobile-menu-button i");
-          if (mobileIcon) {
-            mobileIcon.classList.toggle("dark:text-gray-800", !isDark);
-          }
-
-          feather.replace();
-        }
-        function toggleTheme() {
-          const currentTheme =
-            localStorage.getItem("theme") ||
-            (prefersDarkScheme.matches ? "dark" : "light");
-          const newTheme = currentTheme === "dark" ? "light" : "dark";
-          setTheme(newTheme);
-        }
-
-        const savedTheme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        ).matches;
-
-        if (savedTheme) {
-          setTheme(savedTheme);
-        } else {
-          setTheme(prefersDark ? "dark" : "light");
-        }
-        themeToggle.addEventListener("click", toggleTheme);
-        mobileThemeToggle.addEventListener("click", (e) => {
-          e.stopPropagation();
-          toggleTheme();
-        });
-
-        if (typeof VANTA !== "undefined") {
-          window.vantaEffect = VANTA.NET({
-            el: "#particles-js",
-            backgroundColor: document.documentElement.classList.contains("dark")
-              ? "#111827"
-              : "#f9fafb",
-            color: document.documentElement.classList.contains("dark")
-              ? "#3b82f6"
-              : "#2563eb",
-            points: 12,
-            maxDistance: 20,
-            spacing: 15,
-          });
-        }
+        // Theme switching logic and redundant Vanta.js initialization removed.
       });
     </script>
   </body>
