@@ -12,7 +12,6 @@
       defer
     ></script>
     <style>
-      /* Simplified animations */
       .animate-float1,
       .animate-float2,
       .animate-float3 {
@@ -29,7 +28,6 @@
         }
       }
 
-      /* Reduced motion styles */
       @media (prefers-reduced-motion: reduce) {
         * {
           animation-duration: 0.01ms !important;
@@ -64,7 +62,6 @@
         font-family: "Space Grotesk", sans-serif;
       }
 
-      /* Animations (Retained) */
       @keyframes floating {
         0% {
           transform: translateY(0px) rotate(0deg);
@@ -175,15 +172,13 @@
         box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
       }
 
-      /* Typewriter effect (REMOVED - now handled by Typed.js for better control) */
       .typewriter {
         overflow: hidden;
         white-space: nowrap;
         letter-spacing: 0.15em;
-        border-right: 0.15em solid transparent; /* Cursor style handled by Typed.js now */
+        border-right: 0.15em solid transparent;
       }
 
-      /* Typed.js Cursor Style */
       .typed-cursor {
         opacity: 1;
         -webkit-animation: typedjsBlink 0.7s infinite;
@@ -201,8 +196,6 @@
           opacity: 1;
         }
       }
-
-      /* --- Custom Mobile Menu Styles (Right-Aligned Modal) --- */
 
       #mobile-menu-modal {
         position: fixed;
@@ -260,7 +253,6 @@
         color: #3b82f6;
       }
 
-      /* FAB Button Styles (Retained) */
       .fab-button {
         position: fixed;
         z-index: 40;
@@ -303,14 +295,13 @@
         pointer-events: auto;
       }
 
-      /* Skill Item Styles (New) */
       .skill-item-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 0.75rem;
         border-radius: 0.5rem;
-        background-color: #1f2937; /* Dark background for item */
+        background-color: #1f2937;
         transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
         cursor: default;
       }
@@ -318,37 +309,31 @@
         transform: translateY(-4px);
       }
 
-      /* Progress Bar Styles */
       .progress-bar-bg {
         width: 100%;
         height: 8px;
-        background-color: #374151; /* Gray background track */
+        background-color: #374151;
         border-radius: 4px;
         overflow: hidden;
         margin-top: 0.5rem;
       }
       .progress-bar-fill {
         height: 100%;
-        background: linear-gradient(
-          90deg,
-          #3b82f6,
-          #8b5cf6
-        ); /* Blue-Purple gradient fill */
-        transition: width 1.5s ease-out; /* Smooth fill animation */
-        width: 0; /* Initial state for animation */
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        transition: width 1.5s ease-out;
+        width: 0;
       }
 
       .skill-percent {
-        font-size: 0.75rem; /* text-xs */
+        font-size: 0.75rem;
         font-weight: 500;
         color: #9ca3af;
         margin-top: 0.25rem;
       }
 
-      /* Project Card Styles (Retained) */
       .project-card {
         transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transform-style: preserve-3d; /* Key for 3D effect */
+        transform-style: preserve-3d;
       }
       .project-card:hover {
         transform: rotateX(5deg) rotateY(5deg) scale(1.03);
@@ -361,7 +346,6 @@
         transform: translateZ(20px);
       }
 
-      /* Contact Feature Styles */
       .contact-feature {
         transition: transform 0.3s;
       }
@@ -374,7 +358,7 @@
       }
       .contact-social-link:hover {
         transform: scale(1.15) rotate(5deg);
-        border: 1px solid rgba(139, 92, 246, 0.5); /* Purple border on hover */
+        border: 1px solid rgba(139, 92, 246, 0.5);
       }
     </style>
   </head>
@@ -1586,7 +1570,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-      // Initialize feather icons after page load
       document.addEventListener("DOMContentLoaded", function () {
         if (typeof feather !== "undefined") {
           feather.replace();
@@ -1595,7 +1578,6 @@
     </script>
     <script defer>
       document.addEventListener("DOMContentLoaded", function () {
-        // Initialize Vanta.js background (Retained)
         if (typeof VANTA !== "undefined") {
           const isDark =
             localStorage.getItem("theme") === "dark" ||
@@ -1619,7 +1601,6 @@
           }
         }
 
-        // --- Mobile Menu Logic (Right-Aligned Modal) ---
         const menuButton = document.getElementById("mobile-menu-button");
         const menuModal = document.getElementById("mobile-menu-modal");
         const menuLinks = menuModal.querySelectorAll(".menu-link-item");
@@ -1630,13 +1611,9 @@
 
           document.body.style.overflow = isOpening ? "hidden" : "auto";
 
-          // FIX: Target the container (menuButton) and tell Feather to replace the icon directly.
-          // Feather.replace() correctly handles updating the SVG/Icon within the button.
-
           const iconContainer = menuButton;
           const newIconName = isOpening ? "x" : "menu";
 
-          // 1. Remove the old icon (SVG element or original <i> if it exists)
           const currentIcon =
             iconContainer.querySelector("svg") ||
             iconContainer.querySelector("i");
@@ -1644,14 +1621,11 @@
             currentIcon.remove();
           }
 
-          // 2. Insert the new <i> tag with the correct icon name
           const newIconElement = document.createElement("i");
           newIconElement.setAttribute("data-feather", newIconName);
-          newIconElement.classList.add("text-white"); // Keep the original class
+          newIconElement.classList.add("text-white");
           iconContainer.appendChild(newIconElement);
 
-          // 3. Re-run Feather.replace() on the specific button to convert the new <i> tag to an SVG.
-          // This is the simplest way to ensure the icon is always updated correctly.
           feather.replace({ target: iconContainer });
         }
 
@@ -1663,7 +1637,6 @@
           }
         });
 
-        // Smooth Scroll for Mobile Menu Links
         menuLinks.forEach((link) => {
           link.addEventListener("click", function (e) {
             e.preventDefault();
@@ -1677,8 +1650,6 @@
           });
         });
 
-        // --- Desktop Nav Smooth Scrolling Logic (FINAL FIX) ---
-        // This targets the links inside the visible desktop navigation bar.
         document
           .querySelectorAll('header nav a[href^="#"]')
           .forEach((anchor) => {
@@ -1692,7 +1663,6 @@
             });
           });
 
-        // --- Skills Bar Animation Logic (Horizontal Bars) ---
         const skillsSection = document.getElementById("skills");
         const skillItems = document.querySelectorAll(".animate-skill");
 
@@ -1723,7 +1693,6 @@
           skillObserver.observe(skillsSection);
         }
 
-        // --- Typed.js Initialization ---
         if (typeof Typed !== "undefined") {
           new Typed("#typed-output", {
             strings: [
@@ -1739,7 +1708,6 @@
           });
         }
 
-        // --- New FAB Button Logic (Retained) ---
         const goToAboutBtn = document.getElementById("go-to-about-btn");
         const backToTopBtn = document.getElementById("back-to-top-btn");
         const homeSection = document.getElementById("home");
@@ -1777,7 +1745,6 @@
         window.addEventListener("scroll", checkScroll);
         goToAboutBtn.classList.add("visible");
 
-        // Theme Toggle Functionality (Retained)
         const themeToggle = document.getElementById("theme-toggle");
         const mobileThemeToggle = document.getElementById(
           "mobile-theme-toggle"
@@ -1797,7 +1764,7 @@
               color: isDark ? "#3b82f6" : "#2563eb",
             });
           }
-          // Manually update the hamburger icon color for light mode when visible
+
           const mobileIcon = document.querySelector("#mobile-menu-button i");
           if (mobileIcon) {
             mobileIcon.classList.toggle("dark:text-gray-800", !isDark);
