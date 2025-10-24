@@ -1298,7 +1298,8 @@
         <div class="text-center mt-12">
           <a
             href="https://github.com/Priyanshu-302"
-            class="px-6 py-3 border border-purple-600 text-purple-400 hover:bg-purple-900 hover:bg-opacity-30 rounded-lg font-medium transition-all duration-300 inline-flex items-center hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20" target="_blank"
+            class="px-6 py-3 border border-purple-600 text-purple-400 hover:bg-purple-900 hover:bg-opacity-30 rounded-lg font-medium transition-all duration-300 inline-flex items-center hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
+            target="_blank"
           >
             View All Projects
             <i
@@ -1510,33 +1511,33 @@
               >
                 <a
                   href="#home"
-                  class="hover:text-blue-400 transition duration-300"
+                  class="hover:text-blue-400 transition duration-300 footer-link"
                   >Home</a
                 >
                 <a
                   href="#about"
-                  class="hover:text-blue-400 transition duration-300"
+                  class="hover:text-blue-400 transition duration-300 footer-link"
                   >About</a
                 >
                 <a
                   href="#education"
-                  class="hover:text-blue-400 transition duration-300"
+                  class="hover:text-blue-400 transition duration-300 footer-link"
                   >Education</a
                 >
                 <a
                   href="#skills"
-                  class="hover:text-blue-400 transition duration-300"
+                  class="hover:text-blue-400 transition duration-300 footer-link"
                   >Skills</a
                 >
                 <a
                   href="#projects"
-                  class="hover:text-blue-400 transition duration-300"
+                  class="hover:text-blue-400 transition duration-300 footer-link"
                   >Projects</a
                 >
               </nav>
               <a
                 href="#contact"
-                class="inline-flex items-center text-purple-400 hover:text-blue-400 text-sm transition duration-300"
+                class="footer-link inline-flex items-center text-purple-400 hover:text-blue-400 text-sm transition duration-300"
               >
                 Let's Connect
                 <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
@@ -1574,7 +1575,7 @@
         }
       });
     </script>
-    <script defer>
+    <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Vanta.js Initialization: FORCING DARK MODE BACKGROUND
         if (typeof VANTA !== "undefined") {
@@ -1739,7 +1740,21 @@
         window.addEventListener("scroll", checkScroll);
         goToAboutBtn.classList.add("visible");
 
-        // Theme switching logic and redundant Vanta.js initialization removed.
+        document.querySelectorAll('header nav a[href^="#"]').forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            toggleMenu();
+
+            const foot_target = this.getAttribute("href");
+
+            setTimeout(() => {
+              document.querySelector(foot_target).scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }, 300);
+          });
+        });
       });
     </script>
   </body>
