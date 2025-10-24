@@ -1739,22 +1739,6 @@
         checkScroll();
         window.addEventListener("scroll", checkScroll);
         goToAboutBtn.classList.add("visible");
-
-        document.querySelectorAll('header nav a[href^="#"]').forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            toggleMenu();
-
-            const foot_target = this.getAttribute("href");
-
-            setTimeout(() => {
-              document.querySelector(foot_target).scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }, 300);
-          });
-        });
       });
     </script>
   </body>
