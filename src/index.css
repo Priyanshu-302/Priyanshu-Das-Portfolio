@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  
+  --color-brand-blue: #3b82f6;
+  --color-brand-purple: #8b5cf6;
+  --color-brand-pink: #ec4899;
+}
+
+/* Base custom styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #030712;
+  color: #f3f4f6;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism custom classes using standard Tailwind v4 Utilities */
+.glass-nav {
+  background: rgba(10, 15, 30, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(17, 24, 39, 0.65);
+  border-color: rgba(99, 102, 241, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+  transform: translateY(-6px) scale(1.01);
+}
+
+.glass-modal {
+  background: rgba(10, 15, 30, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom glow animation */
+.glow-bg {
+  position: relative;
+}
+.glow-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+  padding: 1px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.15;
+  transition: opacity 0.4s ease;
+}
+.glow-bg:hover::before {
+  opacity: 0.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 5px;
+  border: 2px solid #030712;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* 3D Tilt Card Container */
+.perspective-container {
+  perspective: 1000px;
+}
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+}
+
+/* Typed cursor styling */
+.typed-cursor {
+  color: #3b82f6;
+  opacity: 1;
+  animation: cursor-blink 0.7s infinite;
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Animated Background Glowing Orbs */
+.animate-orb-1 {
+  animation: orb-float-1 25s infinite ease-in-out;
+}
+.animate-orb-2 {
+  animation: orb-float-2 30s infinite ease-in-out;
+}
+.animate-orb-3 {
+  animation: orb-float-3 22s infinite ease-in-out;
+}
+
+@keyframes orb-float-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-60px, 50px) scale(1.2);
+  }
+}
+
+@keyframes orb-float-3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-30px, -40px) scale(0.95);
+  }
+  66% {
+    transform: translate(50px, 40px) scale(1.1);
+  }
+}
+
