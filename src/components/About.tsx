@@ -62,7 +62,7 @@ export default function About() {
           >
             <h3 className="text-2xl font-bold font-display text-white mb-4">Who am I?</h3>
             <p className="text-gray-300 leading-relaxed mb-8">
-              I am a Computer Science & Engineering student specializing in AI/ML and Full-Stack Development, with professional experience building conversational AI backends. I love delivering end-to-end systems—ranging from multi-tenant SaaS backends to Gemini-powered query engines—with a strong focus on system performance, reliability, and scalable software design.
+              I am a final-year Computer Science & Engineering student specializing in Full-Stack Backend Systems, Real-Time Streaming Architectures, and LLM Integration. With professional experience engineering conversational AI backends as a Software Engineering Intern at UnifyList, I focus on building transactional relational backends, fault-tolerant GraphQL/RESTful APIs, and real-time streaming pipelines. I am passionate about system architecture and performance, having solved 450+ Data Structures & Algorithms problems on LeetCode.
             </p>
 
             {/* Core Cards */}

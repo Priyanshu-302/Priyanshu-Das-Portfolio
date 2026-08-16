@@ -1,46 +1,46 @@
 import { motion } from "framer-motion";
-import { Code, Server, Database, Layout, Wrench, Cloud, Cpu, Zap, GitBranch, Terminal } from "lucide-react";
+import { Code, Server, Database, Layout, Wrench, Cloud, Cpu, Zap, GitBranch, Brain, Layers } from "lucide-react";
 import PremiumCard from "./PremiumCard";
 
 export default function Skills() {
   const skillCategories = [
     {
-      title: "Languages",
+      title: "Languages & Core CS",
       color: "text-blue-400 border-blue-500/20",
       glowColor: "rgba(59, 130, 246, 0.08)",
       borderColor: "rgba(59, 130, 246, 0.25)",
       skills: [
+        { name: "C++ & C", level: "Advanced", icon: Cpu, iconColor: "text-cyan-400" },
         { name: "JavaScript (ES6+)", level: "Expert", icon: Code, iconColor: "text-yellow-400" },
-        { name: "C", level: "Advanced", icon: Cpu, iconColor: "text-blue-400" },
-        { name: "C++", level: "Advanced", icon: Cpu, iconColor: "text-cyan-400" },
-        { name: "HTML5", level: "Expert", icon: Layout, iconColor: "text-orange-400" },
-        { name: "CSS3", level: "Expert", icon: Code, iconColor: "text-pink-400" },
+        { name: "SQL (DDL/DML)", level: "Advanced", icon: Database, iconColor: "text-blue-400" },
+        { name: "LeetCode (450+ Solved)", level: "Active", icon: Brain, iconColor: "text-pink-400" },
+        { name: "Core CS (OOP, OS, DBMS)", level: "Expert", icon: Server, iconColor: "text-indigo-400" },
       ],
     },
     {
-      title: "Web & Frameworks",
+      title: "Backend & AI Systems",
       color: "text-purple-400 border-purple-500/20",
       glowColor: "rgba(139, 92, 246, 0.08)",
       borderColor: "rgba(139, 92, 246, 0.25)",
       skills: [
-        { name: "React.js", level: "Expert", icon: Cpu, iconColor: "text-cyan-400" },
-        { name: "Node.js", level: "Advanced", icon: Server, iconColor: "text-green-400" },
-        { name: "Express.js", level: "Advanced", icon: Cloud, iconColor: "text-blue-400" },
-        { name: "MongoDB", level: "Advanced", icon: Database, iconColor: "text-green-500" },
-        { name: "PostgreSQL", level: "Advanced", icon: Database, iconColor: "text-sky-400" },
-        { name: "RESTful APIs", level: "Expert", icon: Zap, iconColor: "text-yellow-400" },
+        { name: "Node.js & Express.js", level: "Advanced", icon: Server, iconColor: "text-green-400" },
+        { name: "GraphQL & RESTful APIs", level: "Expert", icon: Zap, iconColor: "text-yellow-400" },
+        { name: "PostgreSQL & MongoDB", level: "Advanced", icon: Database, iconColor: "text-sky-400" },
+        { name: "LLM Tools (OpenAI/Gemini)", level: "Advanced", icon: Brain, iconColor: "text-purple-400" },
+        { name: "System Architecture", level: "Advanced", icon: Layers, iconColor: "text-orange-400" },
       ],
     },
     {
-      title: "Tools & Platforms",
+      title: "Frontend & Cloud DevOps",
       color: "text-green-400 border-green-500/20",
       glowColor: "rgba(16, 185, 129, 0.08)",
       borderColor: "rgba(16, 185, 129, 0.25)",
       skills: [
-        { name: "Git & GitHub", level: "Expert", icon: GitBranch, iconColor: "text-orange-500" },
-        { name: "VS Code", level: "Expert", icon: Terminal, iconColor: "text-blue-500" },
-        { name: "Postman", level: "Advanced", icon: Wrench, iconColor: "text-orange-400" },
-        { name: "Netlify", level: "Advanced", icon: Cloud, iconColor: "text-teal-400" },
+        { name: "React & Framer Motion", level: "Expert", icon: Layout, iconColor: "text-cyan-400" },
+        { name: "Docker & AWS (EC2/S3)", level: "Advanced", icon: Cloud, iconColor: "text-blue-400" },
+        { name: "Git & GitHub Versioning", level: "Expert", icon: GitBranch, iconColor: "text-orange-500" },
+        { name: "Vercel & Netlify Hosting", level: "Expert", icon: Cloud, iconColor: "text-teal-400" },
+        { name: "Jest & Postman Testing", level: "Advanced", icon: Wrench, iconColor: "text-orange-400" },
       ],
     },
   ];

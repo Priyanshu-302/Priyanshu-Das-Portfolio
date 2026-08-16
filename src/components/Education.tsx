@@ -8,14 +8,20 @@ export default function Education() {
       title: "Software Engineering Intern",
       school: "UnifyList (Kolkata, India)",
       year: "Apr 2026 - Present",
-      description: "Engineered OpenAI GPT-4o-mini conversational AI backends for automated application schema generation. Designed real-time SSE streaming pipelines and integrated GraphQL APIs with custom retry systems.",
+      description: [
+        "Engineered an AI-powered conversational backend leveraging OpenAI GPT-4o-mini, transforming requirements into production-ready schemas and reducing manual setup time from 30+ minutes to under 3 minutes.",
+        "Designed real-time streaming pipelines using Server-Sent Events (SSE) to push live compilation percentages and updates, supporting 20+ concurrent user sessions.",
+        "Built a self-healing schema validator enforcing constraints, automatically converting plain ID fields into lookup relationships, reducing schema validation errors by 30%.",
+        "Integrated GraphQL (Apollo/Axios) APIs with exponential backoff retry logic to automate schema generation and migrations, maintaining high reliability under transient failures.",
+        "Collaborated in an Agile team environment, contributing to daily standups, sprint planning, and constructive peer code reviews."
+      ],
       icon: Briefcase,
     },
     {
       title: "B.Tech in Computer Science & Engineering (AI & ML)",
-      school: "Brainware University",
+      school: "Brainware University (Kolkata, India)",
       year: "Aug 2023 - Jul 2027",
-      description: "Currently maintaining an 8.62/10.0 CGPA. Specialized in Data Structures, Object-Oriented Programming, and Web Engineering.",
+      description: "Cumulative GPA: 9.04/10 (Up to 6th Sem). Relevant coursework: Data Structures & Algorithms, Object-Oriented Programming, Operating Systems, DBMS, Web Development.",
       icon: BookOpen,
     },
   ];
@@ -124,9 +130,19 @@ export default function Education() {
                     <p className="text-sm text-indigo-200/70 mb-2 font-medium">
                       {item.school}
                     </p>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                      {item.description}
-                    </p>
+                    {Array.isArray(item.description) ? (
+                      <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-sm text-gray-400 leading-relaxed">
+                        {item.description.map((bullet, bIdx) => (
+                          <li key={bIdx} className="hover:text-indigo-200 transition-colors duration-200">
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
                   </motion.div>
                 );
               })}

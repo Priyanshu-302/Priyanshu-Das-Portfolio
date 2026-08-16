@@ -113,7 +113,7 @@ export default function Contact() {
                   <div>
                     <p className="text-xs text-gray-500">Location</p>
                     <span className="font-semibold text-white">
-                      {import.meta.env.VITE_CONTACT_LOCATION || "Hooghly, India"}
+                      {import.meta.env.VITE_CONTACT_LOCATION || "Chinsurah-Mogra, West Bengal, India"}
                     </span>
                   </div>
                 </div>

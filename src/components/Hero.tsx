@@ -7,9 +7,9 @@ import confetti from "canvas-confetti";
 export default function Hero() {
   const [typedText, setTypedText] = useState("");
   const strings = [
-    "{ Full-Stack Developer }",
-    "{ Software Engineering Intern }",
-    "{ AI/ML Specialist }",
+    "{ Full-Stack Backend Developer }",
+    "{ Real-Time Systems Builder }",
+    "{ LLM Integration Specialist }",
   ];
   const [stringIndex, setStringIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -140,11 +140,10 @@ export default function Hero() {
           variants={itemVariants}
           className="text-base sm:text-lg text-gray-300 mb-8 max-w-lg leading-relaxed"
         >
-          Computer Science & Engineering student specializing in{" "}
-          <span className="text-blue-400 font-medium">AI/ML</span> and{" "}
-          <span className="text-indigo-400 font-medium">Full-Stack Development</span>,
-          with professional experience building conversational AI backends as a
-          Software Engineering Intern at UnifyList.
+          Final-year Computer Science & Engineering student specializing in{" "}
+          <span className="text-blue-400 font-medium">Full-Stack Backend Systems</span>,{" "}
+          <span className="text-indigo-400 font-medium">Real-Time Streaming Architectures</span>, and{" "}
+          <span className="text-pink-400 font-medium">LLM Integration</span>. Solved 450+ DSA problems on LeetCode with a 9.04 CGPA.
         </motion.p>
 
         <motion.div
