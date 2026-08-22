@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Check } from "lucide-react";
-import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from "./SocialIcons";
+import { GithubIcon, LinkedinIcon, InstagramIcon, LeetcodeIcon } from "./SocialIcons";
 import confetti from "canvas-confetti";
 import PremiumCard from "./PremiumCard";
 
@@ -127,8 +127,8 @@ export default function Contact() {
                 {[
                   { icon: GithubIcon, url: import.meta.env.VITE_GITHUB_URL || "https://github.com/Priyanshu-302", color: "hover:bg-neutral-800 hover:text-white" },
                   { icon: LinkedinIcon, url: import.meta.env.VITE_LINKEDIN_URL || "https://www.linkedin.com/in/priyanshu-das-tech/", color: "hover:bg-blue-700 hover:text-white" },
+                  { icon: LeetcodeIcon, url: import.meta.env.VITE_LEETCODE_URL || "https://leetcode.com/u/Priyanshu-302", color: "hover:bg-[#FFA116] hover:text-white" },
                   { icon: InstagramIcon, url: import.meta.env.VITE_INSTAGRAM_URL || "https://www.instagram.com/piku_7439/", color: "hover:bg-pink-600 hover:text-white" },
-                  { icon: TwitterIcon, url: "#", color: "hover:bg-sky-500 hover:text-white" },
                 ].map((social, sIdx) => {
                   const SocialIcon = social.icon;
                   return (

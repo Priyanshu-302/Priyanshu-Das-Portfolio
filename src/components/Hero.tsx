@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Eye, Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./SocialIcons";
+import { GithubIcon, LinkedinIcon, LeetcodeIcon } from "./SocialIcons";
 import confetti from "canvas-confetti";
 
 export default function Hero() {
@@ -143,7 +143,7 @@ export default function Hero() {
           Final-year Computer Science & Engineering student specializing in{" "}
           <span className="text-blue-400 font-medium">Full-Stack Backend Systems</span>,{" "}
           <span className="text-indigo-400 font-medium">Real-Time Streaming Architectures</span>, and{" "}
-          <span className="text-pink-400 font-medium">LLM Integration</span>. Solved 450+ DSA problems on LeetCode with a 9.04 CGPA.
+          <span className="text-pink-400 font-medium">LLM Integration</span>. Solved 500+ DSA problems on LeetCode (Rating: 1545) with a 9.05 CGPA.
         </motion.p>
 
         <motion.div
@@ -186,6 +186,15 @@ export default function Hero() {
             className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-all duration-300"
           >
             <LinkedinIcon size={18} />
+          </a>
+          <a
+            href={import.meta.env.VITE_LEETCODE_URL || "https://leetcode.com/u/Priyanshu-302"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-[#FFA116] hover:border-[#FFA116]/30 transition-all duration-300"
+            aria-label="LeetCode Profile"
+          >
+            <LeetcodeIcon size={18} />
           </a>
           <a
             href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL || "dasp98458@gmail.com"}`}

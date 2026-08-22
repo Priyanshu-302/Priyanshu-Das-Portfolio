@@ -13,7 +13,7 @@ export default function Skills() {
         { name: "C++ & C", level: "Advanced", icon: Cpu, iconColor: "text-cyan-400" },
         { name: "JavaScript (ES6+)", level: "Expert", icon: Code, iconColor: "text-yellow-400" },
         { name: "SQL (DDL/DML)", level: "Advanced", icon: Database, iconColor: "text-blue-400" },
-        { name: "LeetCode (450+ Solved)", level: "Active", icon: Brain, iconColor: "text-pink-400" },
+        { name: "LeetCode (450+ Solved)", level: "1545 Rating", icon: Brain, iconColor: "text-pink-400" },
         { name: "Core CS (OOP, OS, DBMS)", level: "Expert", icon: Server, iconColor: "text-indigo-400" },
       ],
     },
