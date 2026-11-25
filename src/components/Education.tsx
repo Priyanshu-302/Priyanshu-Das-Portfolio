@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BookOpen, Award, CheckCircle, Star, Shield, Briefcase } from "lucide-react";
+import { BookOpen, Award, CheckCircle, Star, Shield, Briefcase, GraduationCap } from "lucide-react";
 import PremiumCard from "./PremiumCard";
 
 export default function Education() {
@@ -37,13 +37,13 @@ export default function Education() {
       title: "MSME Project Shortlist",
       description: "Ministry of MSME, Govt. of India (Aug 2025): Shortlisted for AI-Powered Drone Logistics under innovation support program.",
       icon: CheckCircle,
-      iconColor: "text-green-400",
+      iconColor: "text-emerald-400",
     },
     {
       title: "Adobe India Hackathon Participant",
       description: "Advanced through competitive assessment rounds and algorithmic coding challenges (Jun 2025).",
       icon: Shield,
-      iconColor: "text-blue-400",
+      iconColor: "text-cyan-400",
     },
     {
       title: "Smart India Hackathon Participant",
@@ -57,13 +57,13 @@ export default function Education() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
@@ -85,15 +85,19 @@ export default function Education() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="inline-flex items-center gap-1.5 liquid-pill px-3.5 py-1 text-xs font-mono text-cyan-300 mb-3">
+            <GraduationCap size={13} />
+            <span>BACKGROUND</span>
+          </div>
           <h2 className="text-3xl md:text-5xl font-bold font-display tracking-tight text-white">
-            Education & <span className="bg-gradient-to-r from-indigo-400 to-pink-500 bg-clip-text text-transparent">Milestones</span>
+            Experience & <span className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-pink-400 bg-clip-text text-transparent">Milestones</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-pink-500 mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-indigo-500 mx-auto mt-4 rounded-full shadow-[0_0_10px_#38bdf8]" />
         </motion.div>
 
         {/* Timeline Columns Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Left Column: Academic Timeline */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+          {/* Left Column: Academic & Internship Timeline */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -101,52 +105,58 @@ export default function Education() {
             variants={containerVariants}
             className="w-full h-full"
           >
-            <PremiumCard glowColor="rgba(139, 92, 246, 0.1)" borderColor="rgba(139, 92, 246, 0.25)" className="p-8 h-full">
-            <h3 className="text-2xl font-bold font-display text-white mb-8 flex items-center gap-3">
-              <BookOpen className="text-indigo-400" size={24} />
-              Experience & Education
-            </h3>
+            <PremiumCard
+              glowColor="rgba(139, 92, 246, 0.12)"
+              borderColor="rgba(139, 92, 246, 0.4)"
+              className="p-8 h-full"
+            >
+              <h3 className="text-2xl font-bold font-display text-white mb-8 flex items-center gap-3">
+                <div className="p-2 rounded-2xl bg-indigo-500/15 border border-indigo-400/30 text-indigo-300">
+                  <BookOpen size={20} />
+                </div>
+                <span>Career & Education</span>
+              </h3>
 
-            <div className="relative border-l border-gray-700 ml-4 pl-6 space-y-10">
-              {academicItems.map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="relative group"
-                  >
-                    {/* Node Dot */}
-                    <div className="absolute -left-[37px] top-1.5 w-6 h-6 rounded-full bg-[#0b0f19] border-2 border-indigo-500 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-950 transition-all duration-300">
-                      <IconComponent size={12} />
-                    </div>
+              <div className="relative border-l border-white/15 ml-4 pl-7 space-y-10">
+                {academicItems.map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="relative group"
+                    >
+                      {/* Liquid Droplet Node */}
+                      <div className="absolute -left-[41px] top-1 w-7 h-7 rounded-full liquid-glass-modal border border-cyan-400/50 flex items-center justify-center text-cyan-300 group-hover:scale-110 group-hover:border-cyan-300 shadow-[0_0_12px_rgba(56,189,248,0.3)] transition-all duration-300">
+                        <IconComponent size={13} />
+                      </div>
 
-                    <span className="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 border border-indigo-500/25 rounded-md">
-                      {item.year}
-                    </span>
-                    <h4 className="text-lg font-bold font-display text-white mt-2 mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-indigo-200/70 mb-2 font-medium">
-                      {item.school}
-                    </p>
-                    {Array.isArray(item.description) ? (
-                      <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-sm text-gray-400 leading-relaxed">
-                        {item.description.map((bullet, bIdx) => (
-                          <li key={bIdx} className="hover:text-indigo-200 transition-colors duration-200">
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {item.description}
+                      <span className="text-xs font-mono text-cyan-300 liquid-pill px-3 py-1 font-medium">
+                        {item.year}
+                      </span>
+                      <h4 className="text-lg font-bold font-display text-white mt-2.5 mb-1 group-hover:text-cyan-300 transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-indigo-200/80 mb-3 font-medium">
+                        {item.school}
                       </p>
-                    )}
-                  </motion.div>
-                );
-              })}
-            </div>
+                      {Array.isArray(item.description) ? (
+                        <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-sm text-gray-300/80 leading-relaxed">
+                          {item.description.map((bullet, bIdx) => (
+                            <li key={bIdx} className="hover:text-white transition-colors duration-200">
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-xs sm:text-sm text-gray-300/80 leading-relaxed">
+                          {item.description}
+                        </p>
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </div>
             </PremiumCard>
           </motion.div>
 
@@ -158,51 +168,58 @@ export default function Education() {
             variants={containerVariants}
             className="w-full h-full"
           >
-            <PremiumCard glowColor="rgba(59, 130, 246, 0.1)" borderColor="rgba(59, 130, 246, 0.25)" className="p-8 h-full flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-bold font-display text-white mb-8 flex items-center gap-3">
-                <Award className="text-blue-400" size={24} />
-                Achievements & Certifications
-              </h3>
-
-              <div className="space-y-8">
-                {certificationItems.map((item, index) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={itemVariants}
-                      className="flex gap-4 group"
-                    >
-                      <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 ${item.iconColor} group-hover:scale-105 group-hover:border-white/20 transition-all duration-300 h-fit`}>
-                        <IconComponent size={20} />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-bold font-display text-white mb-1 group-hover:text-indigo-300 transition-colors">
-                          {item.title}
-                        </h4>
-                        <p className="text-sm text-gray-400 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <motion.div
-              variants={itemVariants}
-              className="mt-10 pt-6 border-t border-white/5 text-center lg:text-left"
+            <PremiumCard
+              glowColor="rgba(56, 189, 248, 0.12)"
+              borderColor="rgba(56, 189, 248, 0.4)"
+              className="p-8 h-full flex flex-col justify-between"
             >
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+              <div>
+                <h3 className="text-2xl font-bold font-display text-white mb-8 flex items-center gap-3">
+                  <div className="p-2 rounded-2xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-300">
+                    <Award size={20} />
+                  </div>
+                  <span>Honors & Certifications</span>
+                </h3>
+
+                <div className="space-y-4">
+                  {certificationItems.map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                      <motion.div
+                        key={index}
+                        variants={itemVariants}
+                        whileHover={{ y: -2 }}
+                        className="flex gap-4 p-4 rounded-2xl liquid-pill bg-white/[0.02] border-white/10 hover:border-white/25 hover:bg-white/[0.06] transition-all duration-300 group cursor-default"
+                      >
+                        <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 ${item.iconColor} group-hover:scale-110 transition-transform duration-300 h-fit flex-shrink-0`}>
+                          <IconComponent size={18} />
+                        </div>
+                        <div>
+                          <h4 className="text-base font-bold font-display text-white mb-1 group-hover:text-cyan-300 transition-colors">
+                            {item.title}
+                          </h4>
+                          <p className="text-xs text-gray-300/80 leading-relaxed">
+                            {item.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <motion.div
+                variants={itemVariants}
+                className="mt-8 pt-6 border-t border-white/10 text-center lg:text-left"
               >
-                Let's discuss collaborations
-                <span className="translate-y-[0.5px]">→</span>
-              </a>
-            </motion.div>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 hover:text-cyan-200 transition-colors group"
+                >
+                  <span>Let's discuss collaborations</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </motion.div>
             </PremiumCard>
           </motion.div>
         </div>

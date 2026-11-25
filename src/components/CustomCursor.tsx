@@ -10,7 +10,7 @@ export default function CustomCursor() {
   const mouseY = useMotionValue(-100);
 
   // Smooth spring options for the outer circle lag follow effect
-  const springConfig = { damping: 28, stiffness: 220, mass: 0.6 };
+  const springConfig = { damping: 26, stiffness: 240, mass: 0.5 };
   const cursorXSpring = useSpring(mouseX, springConfig);
   const cursorYSpring = useSpring(mouseY, springConfig);
 
@@ -38,6 +38,8 @@ export default function CustomCursor() {
         target.closest("a") ||
         target.closest("button") ||
         target.closest(".tilt-card") ||
+        target.closest(".liquid-glass-card") ||
+        target.closest(".liquid-pill") ||
         target.classList.contains("cursor-pointer")
       ) {
         setHovered(true);
@@ -72,32 +74,39 @@ export default function CustomCursor() {
         }
       `}</style>
 
-      {/* Inner Solid Dot */}
+      {/* Inner Fluid Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-indigo-400 rounded-full z-[100] pointer-events-none -translate-x-1/2 -translate-y-1/2 hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full z-[100] pointer-events-none -translate-x-1/2 -translate-y-1/2 hidden md:block"
         style={{
           x: mouseX,
           y: mouseY,
         }}
         animate={{
-          scale: hovered ? 1.4 : 1,
-          backgroundColor: hovered ? "#f472b6" : "#60a5fa",
+          scale: hovered ? 1.5 : 1,
+          backgroundColor: hovered ? "#34d399" : "#38bdf8",
+          boxShadow: hovered
+            ? "0 0 12px #34d399, 0 0 4px #ffffff"
+            : "0 0 10px #38bdf8, 0 0 2px #ffffff",
         }}
-        transition={{ type: "spring", stiffness: 350, damping: 20 }}
+        transition={{ type: "spring", stiffness: 400, damping: 22 }}
       />
 
-      {/* Outer Glowing Circle with spring lag */}
+      {/* Outer Liquid Glass Droplet Ring */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full border border-indigo-500/40 z-[99] pointer-events-none -translate-x-1/2 -translate-y-1/2 hidden md:block"
+        className="fixed top-0 left-0 rounded-full z-[99] pointer-events-none -translate-x-1/2 -translate-y-1/2 hidden md:block backdrop-blur-[1px]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
-          width: hovered ? 46 : 26,
-          height: hovered ? 46 : 26,
+          width: hovered ? 52 : 30,
+          height: hovered ? 52 : 30,
         }}
         animate={{
-          backgroundColor: hovered ? "rgba(99, 102, 241, 0.05)" : "rgba(99, 102, 241, 0)",
-          borderColor: hovered ? "rgba(244, 114, 182, 0.6)" : "rgba(96, 165, 250, 0.4)",
+          backgroundColor: hovered ? "rgba(52, 211, 153, 0.08)" : "rgba(56, 189, 248, 0.04)",
+          borderColor: hovered ? "rgba(52, 211, 153, 0.6)" : "rgba(56, 189, 248, 0.4)",
+          borderWidth: 1.5,
+          boxShadow: hovered
+            ? "inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 0 16px rgba(52, 211, 153, 0.3)"
+            : "inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 0 12px rgba(56, 189, 248, 0.2)",
         }}
         transition={{ type: "spring", stiffness: 350, damping: 20 }}
       />

@@ -47,9 +47,8 @@ export default function App() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Initial call
     handleScroll();
-    
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -71,18 +70,19 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen selection:bg-indigo-500/30 selection:text-indigo-200">
-      {/* Custom Mouse Cursor */}
+    <div className="relative min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* Liquid Mouse Cursor */}
       <CustomCursor />
 
-      {/* Background Media & WebGL */}
+      {/* Background Media & 3D WebGL Glass Scene */}
       <VideoBackground />
       <Scene3D />
 
-      {/* Glowing Ambient Backdrop Orbs */}
-      <div className="fixed top-[15%] left-[5%] w-80 h-80 rounded-full bg-blue-500/5 blur-3xl pointer-events-none animate-orb-1 -z-10" />
-      <div className="fixed top-[45%] right-[10%] w-[400px] h-[400px] rounded-full bg-purple-500/4 blur-3xl pointer-events-none animate-orb-2 -z-10" />
-      <div className="fixed bottom-[15%] left-[20%] w-96 h-96 rounded-full bg-pink-500/5 blur-3xl pointer-events-none animate-orb-3 -z-10" />
+      {/* Ambient Liquid Caustic Glow Blobs */}
+      <div className="fixed top-[10%] left-[5%] w-[420px] h-[420px] rounded-full bg-cyan-500/[0.07] blur-[120px] pointer-events-none animate-orb-1 -z-10" />
+      <div className="fixed top-[40%] right-[8%] w-[480px] h-[480px] rounded-full bg-indigo-500/[0.06] blur-[140px] pointer-events-none animate-orb-2 -z-10" />
+      <div className="fixed bottom-[10%] left-[15%] w-[450px] h-[450px] rounded-full bg-pink-500/[0.05] blur-[130px] pointer-events-none animate-orb-3 -z-10" />
+      <div className="fixed top-[70%] right-[25%] w-[380px] h-[380px] rounded-full bg-emerald-500/[0.04] blur-[110px] pointer-events-none animate-orb-1 -z-10" />
 
       {/* Navigation Header */}
       <Header activeSection={activeSection} />
@@ -100,7 +100,7 @@ export default function App() {
       {/* Footer */}
       <Footer />
 
-      {/* FAB Floating Control Buttons */}
+      {/* Liquid Floating Action Buttons */}
       <AnimatePresence>
         {/* Scroll Down to About */}
         {showScrollDown && (
@@ -110,7 +110,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             onClick={scrollToAbout}
-            className="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-white flex items-center justify-center border border-white/20 shadow-lg shadow-amber-500/10 hover:shadow-amber-500/30 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+            className="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full liquid-btn-emerald text-white flex items-center justify-center cursor-pointer shadow-2xl"
             aria-label="Scroll Down to About Section"
           >
             <ChevronDown size={20} className="animate-bounce" />
@@ -125,7 +125,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white flex items-center justify-center border border-white/20 shadow-lg shadow-indigo-500/10 hover:shadow-indigo-500/30 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+            className="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full liquid-btn-primary text-white flex items-center justify-center cursor-pointer shadow-2xl"
             aria-label="Back to Top"
           >
             <ChevronUp size={20} />

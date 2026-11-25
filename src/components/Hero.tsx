@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Eye, Mail } from "lucide-react";
+import { ArrowRight, Eye, Mail, Sparkles } from "lucide-react";
 import { GithubIcon, LinkedinIcon, LeetcodeIcon } from "./SocialIcons";
 import confetti from "canvas-confetti";
 
+const TYPED_STRINGS = [
+  "{ Full-Stack Backend Developer }",
+  "{ Real-Time Systems Builder }",
+  "{ LLM Integration Specialist }",
+];
+
 export default function Hero() {
   const [typedText, setTypedText] = useState("");
-  const strings = [
-    "{ Full-Stack Backend Developer }",
-    "{ Real-Time Systems Builder }",
-    "{ LLM Integration Specialist }",
-  ];
   const [stringIndex, setStringIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   // Custom typing effect implementation
   useEffect(() => {
-    const currentString = strings[stringIndex];
+    const currentString = TYPED_STRINGS[stringIndex];
     let timer: number;
 
     const tick = () => {
@@ -26,7 +27,6 @@ export default function Hero() {
         setCharIndex((prev) => prev + 1);
 
         if (charIndex >= currentString.length) {
-          // Pause at the end of typing
           timer = setTimeout(() => setIsDeleting(true), 1500);
           return;
         }
@@ -36,7 +36,7 @@ export default function Hero() {
 
         if (charIndex <= 0) {
           setIsDeleting(false);
-          setStringIndex((prev) => (prev + 1) % strings.length);
+          setStringIndex((prev) => (prev + 1) % TYPED_STRINGS.length);
           return;
         }
       }
@@ -51,12 +51,11 @@ export default function Hero() {
   }, [charIndex, isDeleting, stringIndex]);
 
   const handleHeroImageClick = () => {
-    // Fun easter egg confetti burst on avatar click
     confetti({
-      particleCount: 80,
-      spread: 60,
+      particleCount: 90,
+      spread: 70,
       origin: { y: 0.6 },
-      colors: ["#3b82f6", "#8b5cf6", "#ec4899"],
+      colors: ["#38bdf8", "#818cf8", "#f472b6", "#34d399"],
     });
   };
 
@@ -102,7 +101,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col md:flex-row justify-between items-center px-4 pt-32 pb-16 md:py-0 overflow-hidden"
+      className="relative min-h-[92vh] flex flex-col md:flex-row justify-between items-center px-4 pt-32 pb-16 md:py-0 overflow-hidden"
     >
       {/* Hero Left Content */}
       <motion.div
@@ -111,71 +110,78 @@ export default function Hero() {
         animate="visible"
         className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left z-10"
       >
-        <motion.span
+        {/* Liquid Status Pill */}
+        <motion.div
           variants={itemVariants}
-          className="px-3 py-1 text-xs font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 rounded-full mb-4"
+          className="liquid-pill px-4 py-1.5 flex items-center gap-2 mb-6 cursor-default"
         >
-          Available for Opportunities
-        </motion.span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+          <span className="text-xs font-medium text-emerald-300 tracking-wide">
+            Available for Opportunities
+          </span>
+        </motion.div>
 
         <motion.h1
           variants={itemVariants}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-tight mb-4 text-white"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-display leading-[1.1] mb-4 text-white tracking-tight"
         >
-          Hello, I'm <br className="hidden md:inline" />
-          <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-pink-500 bg-clip-text text-transparent">
-            Priyanshu Das
+          Engineering <br className="hidden md:inline" />
+          <span className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-pink-400 bg-clip-text text-transparent">
+            Scalable Systems
           </span>
         </motion.h1>
 
+        {/* Dynamic Typing Title in Liquid Glass Badge */}
         <motion.div
           variants={itemVariants}
-          className="text-xl sm:text-2xl md:text-3xl font-mono text-indigo-400 h-10 mb-6 flex items-center"
+          className="liquid-pill px-4 py-2 text-base sm:text-lg font-mono text-cyan-300 mb-6 flex items-center shadow-inner"
         >
           <span>{typedText}</span>
-          <span className="w-1.5 h-6 bg-indigo-500 ml-1 animate-pulse" />
+          <span className="w-1.5 h-5 bg-cyan-400 ml-1.5 animate-pulse rounded-full" />
         </motion.div>
 
         <motion.p
           variants={itemVariants}
-          className="text-base sm:text-lg text-gray-300 mb-8 max-w-lg leading-relaxed"
+          className="text-base sm:text-lg text-gray-300/90 mb-8 max-w-lg leading-relaxed font-normal"
         >
-          Final-year Computer Science & Engineering student specializing in{" "}
-          <span className="text-blue-400 font-medium">Full-Stack Backend Systems</span>,{" "}
-          <span className="text-indigo-400 font-medium">Real-Time Streaming Architectures</span>, and{" "}
-          <span className="text-pink-400 font-medium">LLM Integration</span>. Solved 500+ DSA problems on LeetCode (Rating: 1545) with a 9.05 CGPA.
+          Final-year Computer Science student specializing in{" "}
+          <span className="text-cyan-300 font-semibold">Full-Stack Backend Systems</span>,{" "}
+          <span className="text-indigo-300 font-semibold">Real-Time Streaming Architectures</span>, and{" "}
+          <span className="text-pink-300 font-semibold">LLM Integration</span>. Solved 450+ DSA problems on LeetCode with a 9.04 CGPA.
         </motion.p>
 
+        {/* Liquid Action Buttons (Reference style: Pill Buttons) */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start"
+          className="flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto justify-center md:justify-start"
         >
           <a
             href="#contact"
             onClick={(e) => handleScrollTo(e, "#contact")}
-            className="group px-6 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-400 hover:to-indigo-500 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 flex items-center justify-center gap-2 cursor-pointer"
+            className="liquid-btn-emerald px-7 py-3.5 text-white font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer shadow-lg group"
           >
-            Let's Connect
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <span>Let's Talk</span>
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
 
           <a
             href="#projects"
             onClick={(e) => handleScrollTo(e, "#projects")}
-            className="px-6 py-3.5 border border-white/10 hover:border-indigo-500/40 text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+            className="liquid-btn-glass px-7 py-3.5 text-gray-200 hover:text-white font-semibold text-sm flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Eye size={18} />
-            View Work
+            <Eye size={16} className="text-cyan-300" />
+            <span>View Projects</span>
           </a>
         </motion.div>
 
-        {/* Mini Social Links */}
-        <motion.div variants={itemVariants} className="flex gap-4 mt-8">
+        {/* Liquid Social Links */}
+        <motion.div variants={itemVariants} className="flex gap-3 mt-8">
           <a
             href={import.meta.env.VITE_GITHUB_URL || "https://github.com/Priyanshu-302"}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-all duration-300"
+            className="liquid-pill p-2.5 text-gray-300 hover:text-white hover:border-white/30 transition-all duration-300"
+            aria-label="GitHub Profile"
           >
             <GithubIcon size={18} />
           </a>
@@ -183,7 +189,8 @@ export default function Hero() {
             href={import.meta.env.VITE_LINKEDIN_URL || "https://www.linkedin.com/in/priyanshu-das-tech/"}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-all duration-300"
+            className="liquid-pill p-2.5 text-gray-300 hover:text-white hover:border-white/30 transition-all duration-300"
+            aria-label="LinkedIn Profile"
           >
             <LinkedinIcon size={18} />
           </a>
@@ -191,27 +198,28 @@ export default function Hero() {
             href={import.meta.env.VITE_LEETCODE_URL || "https://leetcode.com/u/Priyanshu-302"}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-[#FFA116] hover:border-[#FFA116]/30 transition-all duration-300"
+            className="liquid-pill p-2.5 text-gray-300 hover:text-[#FFA116] hover:border-[#FFA116]/40 transition-all duration-300"
             aria-label="LeetCode Profile"
           >
             <LeetcodeIcon size={18} />
           </a>
           <a
             href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL || "dasp98458@gmail.com"}`}
-            className="p-2.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-all duration-300"
+            className="liquid-pill p-2.5 text-gray-300 hover:text-white hover:border-white/30 transition-all duration-300"
+            aria-label="Send Email"
           >
             <Mail size={18} />
           </a>
         </motion.div>
       </motion.div>
 
-      {/* Hero Right Avatar Content */}
+      {/* Hero Right Avatar in Liquid Glass Frame */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{
           opacity: 1,
           scale: 1,
-          y: [0, -12, 0],
+          y: [0, -10, 0],
         }}
         transition={{
           opacity: { duration: 0.8, delay: 0.3 },
@@ -220,20 +228,42 @@ export default function Hero() {
         }}
         className="w-full md:w-1/2 flex justify-center items-center mt-12 md:mt-0 z-10"
       >
-        <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 group">
-          {/* Back glows */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 animate-pulse" />
-          
-          {/* Glass frame */}
+        <div className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-[380px] md:h-[380px] group">
+          {/* Ambient Liquid Caustic Glow behind Avatar */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/20 via-indigo-500/30 to-pink-500/20 blur-3xl opacity-60 group-hover:opacity-90 transition-opacity duration-700 animate-pulse" />
+
+          {/* Liquid Glass Refraction Outer Ring */}
           <div
             onClick={handleHeroImageClick}
-            className="w-full h-full rounded-full p-2 border-2 border-dashed border-indigo-500/30 hover:border-indigo-400 group-pointer transition-colors duration-500 relative cursor-pointer"
+            className="w-full h-full rounded-[38px] p-3.5 liquid-glass-pane transition-all duration-500 hover:scale-[1.02] cursor-pointer shadow-2xl relative"
           >
-            <img
-              src="portfolio-image-1.jpg"
-              alt="Priyanshu Das"
-              className="rounded-full w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-[1.02] shadow-2xl"
-            />
+            {/* Inner Refractive Photo Container */}
+            <div className="w-full h-full rounded-[28px] overflow-hidden relative shadow-inner border border-white/20">
+              <img
+                src="portfolio-image-1.jpg"
+                alt="Priyanshu Das"
+                className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+              />
+
+              {/* Gloss Specular Arc Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+
+              {/* Liquid Interactive Badge at Corner of Avatar */}
+              <div className="absolute bottom-3 left-3 right-3 liquid-glass-modal rounded-2xl p-2.5 flex items-center justify-between border border-white/20 backdrop-blur-xl">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300">
+                    <Sparkles size={14} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-semibold text-white leading-tight">Priyanshu Das</p>
+                    <p className="text-[9px] text-gray-300 font-mono">CSE • AI & ML</p>
+                  </div>
+                </div>
+                <span className="text-[10px] font-mono text-emerald-400 font-semibold px-2 py-0.5 liquid-pill bg-emerald-500/10 border-emerald-500/30">
+                  9.04 CGPA
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>

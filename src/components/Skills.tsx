@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
-import { Code, Server, Database, Layout, Wrench, Cloud, Cpu, Zap, GitBranch, Brain, Layers } from "lucide-react";
+import { Code, Server, Database, Layout, Wrench, Cloud, Cpu, Zap, GitBranch, Brain, Layers, CpuIcon } from "lucide-react";
 import PremiumCard from "./PremiumCard";
 
 export default function Skills() {
   const skillCategories = [
     {
       title: "Languages & Core CS",
-      color: "text-blue-400 border-blue-500/20",
-      glowColor: "rgba(59, 130, 246, 0.08)",
-      borderColor: "rgba(59, 130, 246, 0.25)",
+      color: "text-cyan-300",
+      glowColor: "rgba(56, 189, 248, 0.12)",
+      borderColor: "rgba(56, 189, 248, 0.4)",
+      badgeColor: "text-cyan-300 bg-cyan-500/10 border-cyan-500/30",
       skills: [
         { name: "C++ & C", level: "Advanced", icon: Cpu, iconColor: "text-cyan-400" },
         { name: "JavaScript (ES6+)", level: "Expert", icon: Code, iconColor: "text-yellow-400" },
@@ -19,9 +20,10 @@ export default function Skills() {
     },
     {
       title: "Backend & AI Systems",
-      color: "text-purple-400 border-purple-500/20",
-      glowColor: "rgba(139, 92, 246, 0.08)",
-      borderColor: "rgba(139, 92, 246, 0.25)",
+      color: "text-indigo-300",
+      glowColor: "rgba(139, 92, 246, 0.12)",
+      borderColor: "rgba(139, 92, 246, 0.4)",
+      badgeColor: "text-indigo-300 bg-indigo-500/10 border-indigo-500/30",
       skills: [
         { name: "Node.js & Express.js", level: "Advanced", icon: Server, iconColor: "text-green-400" },
         { name: "GraphQL & RESTful APIs", level: "Expert", icon: Zap, iconColor: "text-yellow-400" },
@@ -32,9 +34,10 @@ export default function Skills() {
     },
     {
       title: "Frontend & Cloud DevOps",
-      color: "text-green-400 border-green-500/20",
-      glowColor: "rgba(16, 185, 129, 0.08)",
-      borderColor: "rgba(16, 185, 129, 0.25)",
+      color: "text-emerald-300",
+      glowColor: "rgba(16, 185, 129, 0.12)",
+      borderColor: "rgba(16, 185, 129, 0.4)",
+      badgeColor: "text-emerald-300 bg-emerald-500/10 border-emerald-500/30",
       skills: [
         { name: "React & Framer Motion", level: "Expert", icon: Layout, iconColor: "text-cyan-400" },
         { name: "Docker & AWS (EC2/S3)", level: "Advanced", icon: Cloud, iconColor: "text-blue-400" },
@@ -77,10 +80,14 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="inline-flex items-center gap-1.5 liquid-pill px-3.5 py-1 text-xs font-mono text-cyan-300 mb-3">
+            <CpuIcon size={13} />
+            <span>CAPABILITIES</span>
+          </div>
           <h2 className="text-3xl md:text-5xl font-bold font-display tracking-tight text-white">
-            My <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Skills</span>
+            Technical <span className="bg-gradient-to-r from-cyan-300 via-indigo-300 to-pink-400 bg-clip-text text-transparent">Expertise</span>
           </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mt-4 rounded-full" />
+          <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-indigo-500 mx-auto mt-4 rounded-full shadow-[0_0_10px_#38bdf8]" />
         </motion.div>
 
         {/* Skills Cards Grid */}
@@ -89,7 +96,7 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-7"
         >
           {skillCategories.map((category, catIdx) => (
             <motion.div
@@ -100,14 +107,14 @@ export default function Skills() {
               <PremiumCard
                 glowColor={category.glowColor}
                 borderColor={category.borderColor}
-                className="p-6 h-full flex flex-col justify-between"
+                className="p-7 h-full flex flex-col justify-between"
               >
                 <div>
-                  <h3 className={`text-xl font-bold font-display text-center mb-6 ${category.color}`}>
+                  <h3 className={`text-xl font-bold font-display text-center mb-6 ${category.color} tracking-tight`}>
                     {category.title}
                   </h3>
 
-                  {/* Skills List of Badges */}
+                  {/* Skills List of Liquid Micro-Pills */}
                   <div className="flex flex-col gap-2.5">
                     {category.skills.map((skill, skillIdx) => {
                       const SkillIcon = skill.icon;
@@ -119,25 +126,21 @@ export default function Skills() {
                           viewport={{ once: true }}
                           transition={{
                             duration: 0.4,
-                            delay: 0.05 * skillIdx,
+                            delay: 0.04 * skillIdx,
                             ease: "easeOut",
                           }}
-                          whileHover={{ y: -2 }}
-                          className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/[0.08] transition-colors duration-300 group cursor-default"
+                          whileHover={{ y: -2, scale: 1.01 }}
+                          className="flex items-center justify-between p-3 rounded-2xl liquid-pill bg-white/[0.03] border-white/10 hover:border-white/25 hover:bg-white/[0.08] transition-all duration-300 group cursor-default shadow-sm"
                         >
                           <div className="flex items-center gap-3 min-w-0">
-                            <div className={`${skill.iconColor} group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                              <SkillIcon size={18} />
+                            <div className={`${skill.iconColor} p-1.5 rounded-xl bg-white/5 border border-white/10 group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
+                              <SkillIcon size={16} />
                             </div>
                             <span className="text-sm font-semibold text-gray-200 group-hover:text-white transition-colors truncate">
                               {skill.name}
                             </span>
                           </div>
-                          <span className={`text-[9px] font-mono px-2 py-0.5 border rounded-md uppercase tracking-wider flex-shrink-0 ${
-                            category.title === "Languages" ? "text-blue-400 bg-blue-500/10 border-blue-500/20" :
-                            category.title === "Web & Frameworks" ? "text-purple-400 bg-purple-500/10 border-purple-500/20" :
-                            "text-green-400 bg-green-500/10 border-green-500/20"
-                          }`}>
+                          <span className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full uppercase tracking-wider flex-shrink-0 font-medium ${category.badgeColor}`}>
                             {skill.level}
                           </span>
                         </motion.div>
